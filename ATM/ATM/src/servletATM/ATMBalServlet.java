@@ -30,8 +30,25 @@ public class ATMBalServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		RequestDispatcher rd = null;
-		rd = request.getRequestDispatcher("/WEB-INF/html/homeATM.html");
-		rd.forward(request, response);
+		
+		
+		
+		//String choice = request.getParameter();
+		
+		if(request.getParameter("checkBal") != null) {
+			rd = request.getRequestDispatcher("/WEB-INF/html/checkBalance.html");
+			rd.forward(request, response);
+		} else if ( request.getParameter("withdrawMon") != null){
+			rd = request.getRequestDispatcher("/WEB-INF/html/withdrawAtm.html");
+			rd.forward(request, response);
+		} else if(request.getParameter("depositMon") != null) {	
+			rd = request.getRequestDispatcher("/WEB-INF/html/depositAtm.html");
+			rd.forward(request, response);
+		}else {
+	
+			rd = request.getRequestDispatcher("/WEB-INF/html/homeATM.html");
+			rd.forward(request, response);
+		}
 	}
 
 	/**
